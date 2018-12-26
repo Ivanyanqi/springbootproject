@@ -25,6 +25,8 @@ public class CallPythonController {
         BufferedReader brerror = new BufferedReader(new InputStreamReader(exec.getErrorStream()));
         sb.append("=============错误============<br>");
         brerror.lines().forEach(line->sb.append(line).append("<br>"));
+        br.close();
+        brerror.close();
         return sb.toString();
     }
 }
