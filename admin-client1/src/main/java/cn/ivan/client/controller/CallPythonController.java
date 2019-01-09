@@ -1,5 +1,6 @@
 package cn.ivan.client.controller;
 
+import cn.ivan.client.util.JNIUtil;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,4 +30,10 @@ public class CallPythonController {
         brerror.close();
         return sb.toString();
     }
+
+    @GetMapping("/getjni")
+    public String getJNI() {
+        return new JNIUtil().printPyStr("{\"username\":\"yanqi\",\"age\",12}");
+    }
+
 }
