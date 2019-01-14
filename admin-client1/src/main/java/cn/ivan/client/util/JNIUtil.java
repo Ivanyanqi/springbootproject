@@ -1,8 +1,11 @@
 package cn.ivan.client.util;
 
+import org.springframework.stereotype.Component;
+
 /**
  * 测试jni调用
  */
+@Component
 public class JNIUtil {
 
     public native String printPyStr(String argv);
@@ -12,7 +15,7 @@ public class JNIUtil {
     }
 
     public static void main(String[] argv) {
-        String res = new JNIUtil().printPyStr("我是java，调用c语言输出");
+        String res = new JNIUtil().printPyStr("10000");
         System.out.println("=====java输出==========:" + res);
     }
 }

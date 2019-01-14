@@ -1,5 +1,6 @@
 package cn.ivan.client.other;
 
+import cn.ivan.client.util.command.LocalCommandExecutor;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
@@ -7,8 +8,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.management.ManagementFactory;
-import java.util.Map;
 import java.util.TreeMap;
+import java.util.concurrent.*;
 
 /**
  * @author : yanqi
@@ -38,27 +39,26 @@ public class PidTest {
     }
 
     @Test
-    public void testPython() throws IOException {
+    public void testPython() {
 //        /Users/yanqi/WorkSpaces/python/maoyan/quickSort.py
-
-        String[] cmdArr = {"/bin/sh","-c",
-                "/usr/local/var/pyenv/versions/3.6.0/bin/python /Users/yanqi/WorkSpaces/python/maoyan/quickSort.py 2000"};
-
+        ExecutorService service =
+                new ThreadPoolExecutor(2, 2, 0, TimeUnit.MICROSECONDS, new LinkedBlockingDeque<>());
+        String command = "/usr/local/var/pyenv/versions/3.6.0/bin/python";
         // ide 中运行缺少环境变量LANG=UTF-8"，导致python stdout 输出编码不对，中文出错
-        Process exec = Runtime.getRuntime()
-                .exec(cmdArr,new String[]{"LANG=UTF-8"});
-//
-//        Process exec = Runtime.getRuntime()
-//                .exec("/Users/yanqi/WorkSpaces/shell/callpy.sh");
-        BufferedReader brerror = new BufferedReader(new InputStreamReader(exec.getErrorStream()));
-        System.out.println("==========error===================");
-
-        BufferedReader br = new BufferedReader(new InputStreamReader(exec.getInputStream(), "utf-8"));
-        br.lines().forEach(System.out::println);
-
-        brerror.lines().forEach(System.out::println);
-
-
+        // System.setProperty("LANG","UTF-8");
+        String[] env = {"LANG=UTF-8"};
+        String[] args = {"/Users/yanqi/WorkSpaces/python/maoyan/quickSort.py", "5000000"};
+        long start = System.currentTimeMillis();
+        String exec = new LocalCommandExecutor
+                .LocalCommandExecutorBuilder(service)
+                .setTimeout(10)
+                .getInstance()
+                .exec(command, args, env)
+                .orElse("执行失败");
+        long end = System.currentTimeMillis();
+        log.info("执行时间: {}", (end - start));
+        log.info(exec);
+        service.shutdown();
     }
 
     @Test
