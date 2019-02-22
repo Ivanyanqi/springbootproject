@@ -25,7 +25,7 @@ public class ThreadPoolConfig {
     @Bean
     public ExecutorService executorService() {
         ThreadFactory factory = new ThreadFactoryBuilder().setNameFormat("我的线程池-%d").build();
-        return new ThreadPoolExecutor(2, 2, 0, TimeUnit.MICROSECONDS, new LinkedBlockingDeque<>(), factory);
+        return new ThreadPoolExecutor(20, 20, 0, TimeUnit.MICROSECONDS, new SynchronousQueue<>(), factory);
     }
 
     @Bean

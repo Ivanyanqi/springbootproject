@@ -1,14 +1,18 @@
 package cn.ivan.client.other;
 
 import cn.ivan.client.util.command.LocalCommandExecutor;
+import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
+import sun.nio.cs.StandardCharsets;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.lang.management.ManagementFactory;
-import java.util.TreeMap;
+import java.text.DateFormat;
+import java.util.*;
 import java.util.concurrent.*;
 
 /**
@@ -39,7 +43,32 @@ public class PidTest {
     }
 
     @Test
-    public void testPython() {
+    public void testPython() throws UnsupportedEncodingException {
+
+        Map<String, Object> head = new HashMap<>();
+        head.put("entryId", "head = 1232\'1312'3");
+        head.put("port", 1232132);
+        head.put("country", "head = china public");
+        head.put("公司", "head = 北京琪琪科技有限公司");
+        head.put("date", new Date());
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("entryHead", head);
+
+        List<Map<String, Object>> list = new ArrayList<>();
+        for (int i = 0; i < 1620; i++) {
+            Map<String, Object> body = new HashMap<>();
+            body.put("entryId", "body" + i + " = 12321312" + i);
+            body.put("port", "body" + i + " = 199900" + i);
+            body.put("country", "body" + i + " = china public" + i);
+            body.put("公司", "body" + i + " = 北京琪琪科技有限公司" + i);
+            list.add(body);
+        }
+        data.put("entryList", list);
+
+        String transData = JSON.toJSONStringWithDateFormat(data, "yyyy-MM-dd HH:mm:ss");
+        log.info("数据大小,{},{}", transData.length(), transData.getBytes("UTF-8").length);
+
 //        /Users/yanqi/WorkSpaces/python/maoyan/quickSort.py
         ExecutorService service =
                 new ThreadPoolExecutor(2, 2, 0, TimeUnit.MICROSECONDS, new LinkedBlockingDeque<>());
@@ -47,7 +76,7 @@ public class PidTest {
         // ide 中运行缺少环境变量LANG=UTF-8"，导致python stdout 输出编码不对，中文出错
         // System.setProperty("LANG","UTF-8");
         String[] env = {"LANG=UTF-8"};
-        String[] args = {"/Users/yanqi/WorkSpaces/python/maoyan/quickSort.py", "5000000"};
+        String[] args = {"/Users/yanqi/WorkSpaces/python/maoyan/baoguandan.py", transData};
         long start = System.currentTimeMillis();
         String exec = new LocalCommandExecutor
                 .LocalCommandExecutorBuilder(service)
