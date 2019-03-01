@@ -21,4 +21,5 @@ public class RuleCondition {
     private int leafLevel;
 
     private String ownConditions;
+
 }
