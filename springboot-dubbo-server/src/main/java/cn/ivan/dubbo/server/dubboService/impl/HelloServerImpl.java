@@ -1,6 +1,7 @@
 package cn.ivan.dubbo.server.dubboService.impl;
 
 import cn.ivan.dubbo.provider.IHelloService;
+import cn.ivan.dubbo.provider.User;
 import com.alibaba.dubbo.config.annotation.Service;
 import org.springframework.stereotype.Component;
 
@@ -17,5 +18,10 @@ public class HelloServerImpl implements IHelloService {
     @Override
     public String saySomething(String msg) {
         return "dubbo server : " + msg;
+    }
+
+    @Override
+    public User getUser(int userId) {
+        return User.of(userId).setUsername("yanqi").setAge(18);
     }
 }

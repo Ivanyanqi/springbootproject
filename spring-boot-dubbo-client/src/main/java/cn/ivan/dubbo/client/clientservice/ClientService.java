@@ -1,6 +1,7 @@
 package cn.ivan.dubbo.client.clientservice;
 
 import cn.ivan.dubbo.provider.IHelloService;
+import cn.ivan.dubbo.provider.User;
 import com.alibaba.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Service;
 
@@ -22,5 +23,9 @@ public class ClientService {
 
     public String testDubboRPC(String msg){
         return iHelloService.saySomething(msg);
+    }
+
+    public User getUserById(int userId) {
+        return iHelloService.getUser(userId);
     }
 }
