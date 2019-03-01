@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: spring-boot-dubbo-server
+  dubbo:
+    server: true
+    registry:
+      address: zookeeper://127.0.0.1:2181
