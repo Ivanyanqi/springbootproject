@@ -11,7 +11,7 @@ public class JNIUtil {
     public native String printPyStr(String argv);
 
     static {
-        System.loadLibrary("pystr");
+        //System.loadLibrary("pystr");
     }
 
     public static void main(String[] argv) {

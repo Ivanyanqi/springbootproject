@@ -7,7 +7,28 @@
 <body>
 <h1>hello world =========</h1>
 
+<button id="btn">点击</button>
+
 </body>
 
 <script src="./1.js"></script>
+<script src="./jquery-3.1.1.min.js"></script>
+<script>
+    $(function(){
+       $("#btn").click(function() {
+           $.ajax({
+               url: "testForward",
+               method: "get",
+               success: function (data) {
+                   console.log(data)
+               }
+           })
+       })
+    })
+
+
+
+</script>
+
+
 </html>

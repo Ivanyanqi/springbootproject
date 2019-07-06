@@ -2,6 +2,8 @@ package cn.ivan.bean;
 
 import lombok.Data;
 
+import java.util.Objects;
+
 /**
  * 解析文件为模型节点
  * @author : yanqi

@@ -30,6 +30,11 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-client</artifactId>
             <version>${admin.client.version}</version>
@@ -70,6 +75,14 @@
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
             <version>2.7.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.ivan</groupId>
+            <artifactId>classes-dex2jar</artifactId>
+            <version>0.0.1</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/resources/lib/classes-dex2jar.jar</systemPath>
         </dependency>
     </dependencies>
 

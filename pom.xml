@@ -33,6 +33,7 @@
         <module>springboot-dubbo-server</module>
         <module>spring-boot-dubbo-client</module>
         <module>dubbo-interface</module>
+        <module>zookeeper-client-demo</module>
     </modules>
 
     <dependencies>

@@ -1,10 +1,18 @@
 package cn.ivan.client;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 
 @SpringBootApplication
+// 不加这个，扫描不到 webServlet WebFilter ，WebListener 注解的类
+@ServletComponentScan(basePackages = "cn.ivan.client")
 public class ClientApplication {
+
+
+    @Value("${api.yun.auth}")
+    private String authKey;
 
     public static void main(String[] args) {
         /**

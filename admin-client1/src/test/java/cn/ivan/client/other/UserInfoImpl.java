@@ -11,4 +11,10 @@ public class UserInfoImpl implements UserInfo {
     public String getName() {
         return "可可西里";
     }
+
+    public static void main(String[] args) {
+        UserInfo.say();
+
+
+    }
 }

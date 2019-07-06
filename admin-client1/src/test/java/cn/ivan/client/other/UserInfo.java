@@ -9,4 +9,10 @@ public interface UserInfo {
 
 
     String getName();
+
+    static void say(){
+        System.out.println("==============");
+    }
+
+
 }
