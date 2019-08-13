@@ -16,14 +16,9 @@ import java.util.concurrent.Executors;
  */
 public class RandomUtil {
         private final static String DATE_PATTERN = "yyyyMMddHHmmssSSS";
-        private final static DateTimeFormatter format = DateTimeFormatter.ofPattern(DATE_PATTERN);
-
-        public static String genernateNo1(){
-            return new SimpleDateFormat(DATE_PATTERN).format(new Date()) + randomInt(4);
-        }
-
+        private final static DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern(DATE_PATTERN);
         public static String genernateNo2(){
-            return format.format(LocalDateTime.now()) + randomInt(4);
+            return FORMATTER.format(LocalDateTime.now()) + randomInt(4);
         }
 
         private static String randomInt(int length){
@@ -34,7 +29,6 @@ public class RandomUtil {
             }
             return sb.toString();
         }
-
 
     public static void main(String[] args) throws InterruptedException {
         ExecutorService executorService = Executors.newFixedThreadPool(10);
