@@ -1,5 +1,6 @@
 package cn.ivan.client;
 
+import cn.ivan.client.constants.JavaConstant;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -14,5 +15,6 @@ public class ClientApplication {
          */
         System.out.println(System.getProperty("user.dir"));
         SpringApplication.run(ClientApplication.class, args);
+        System.out.println(JavaConstant.VERSION);
     }
 }

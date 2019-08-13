@@ -23,7 +23,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
-
     /**
      *  视图的位置是有配置文件制定的
      *  spring.mvc.view.prefix=/WEB-INF/

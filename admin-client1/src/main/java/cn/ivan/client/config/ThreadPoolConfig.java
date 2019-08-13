@@ -2,6 +2,7 @@ package cn.ivan.client.config;
 
 import cn.ivan.client.util.command.LocalCommandExecutor;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -17,6 +18,7 @@ import java.util.concurrent.*;
  */
 @Configuration
 @Slf4j
+@Data
 public class ThreadPoolConfig {
 
     @Value("${local.command.timeout:-1}")

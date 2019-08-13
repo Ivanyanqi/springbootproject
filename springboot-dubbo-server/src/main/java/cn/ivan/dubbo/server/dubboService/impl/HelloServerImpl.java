@@ -2,6 +2,7 @@ package cn.ivan.dubbo.server.dubboService.impl;
 
 import cn.ivan.dubbo.provider.IHelloService;
 import cn.ivan.dubbo.provider.User;
+import cn.ivan.dubbo.server.config.DubboConstant;
 import com.alibaba.dubbo.config.annotation.Service;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Component;
  * @author yanqi
  * @version 1.0
  */
-@Service(interfaceClass = IHelloService.class,version = "1.0.0")
+@Service(interfaceClass = IHelloService.class,version = DubboConstant.DUBBO_SERVER_VERSION)
 @Component
 public class HelloServerImpl implements IHelloService {
 

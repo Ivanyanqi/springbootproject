@@ -10,9 +10,9 @@ public class JNIUtil {
 
     public native String printPyStr(String argv);
 
-    static {
-        System.loadLibrary("pystr");
-    }
+//    static {
+//        System.loadLibrary("pystr");
+//    }
 
     public static void main(String[] argv) {
         String res = new JNIUtil().printPyStr("10000");
