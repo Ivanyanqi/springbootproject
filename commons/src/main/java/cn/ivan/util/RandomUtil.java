@@ -18,7 +18,7 @@ public class RandomUtil {
         private final static String DATE_PATTERN = "yyyyMMddHHmmssSSS";
         private final static DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern(DATE_PATTERN);
         public static String genernateNo2(){
-            return FORMATTER.format(LocalDateTime.now()) + randomInt(4);
+            return FORMATTER.format(LocalDateTime.now()) + randomInt(5);
         }
 
         private static String randomInt(int length){
