@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    ${test}  12345678000
+${test}  12345678000
 </body>
 <script src="${pageContext.request.contextPath}/1.js" ></script>
 </html>

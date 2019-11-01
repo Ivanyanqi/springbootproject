@@ -1,9 +1,7 @@
 package cn.ivan.util;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -18,7 +16,7 @@ public class RandomUtil {
         private final static String DATE_PATTERN = "yyyyMMddHHmmssSSS";
         private final static DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern(DATE_PATTERN);
         public static String genernateNo2(){
-            return FORMATTER.format(LocalDateTime.now()) + randomInt(5);
+            return FORMATTER.format(LocalDateTime.now()) + randomInt(4);
         }
 
         private static String randomInt(int length){
