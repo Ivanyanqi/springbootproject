@@ -34,8 +34,13 @@ public class PriorityTest {
         Long id = goods.getId();
         //int compare = Long.compare(id, 0L);
         return (id == null || Long.compare(id,0L) != 1)? goods.getSId() : id;
+//        return (id == null || compare(id) != 1)? goods.getSId() : id;
     }
 
+    private int compare(Long id){
+        log.info("=======方法执行了============");
+        return Long.compare(id,0L);
+    }
     private Long check(){
         Long id = getId(2);
         return (id == null || Long.compare(id,0L) != 1) ? 1L : id;
