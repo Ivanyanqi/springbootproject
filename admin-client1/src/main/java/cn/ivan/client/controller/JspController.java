@@ -2,10 +2,13 @@ package cn.ivan.client.controller;
 
 import cn.ivan.client.config.Log;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.ServletException;
@@ -66,5 +69,16 @@ public class JspController {
         System.out.println("request");
        // request.getRequestDispatcher("/testReadFileInJar").forward(request,response);
         response.sendRedirect("/client/test");
+    }
+
+    @Autowired
+    private HttpServletRequest request;
+
+    @PostMapping("/testParam")
+    @ResponseBody
+    public String testParam(@RequestParam("method")String method){
+        log.info(" method is {}" ,method);
+        log.info(" content is {}",request.getAttribute("data"));
+        return "ok";
     }
 }
