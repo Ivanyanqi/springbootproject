@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.lang.management.ManagementFactory;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.text.DateFormat;
 import java.util.*;
 import java.util.concurrent.*;
@@ -107,6 +109,22 @@ public class PidTest {
         //方法用于返回最大键严格小于给定键，则返回null，如果不存在这样的键关联的键- 值映射关系
         System.out.println(map.ceilingEntry(20));
     }
+
+    @Test
+    public void testReflect() throws Exception {
+
+        Class<?> aClass = Class.forName("cn.ivan.client.other.Student");
+        Student student = new Student();
+        Method set = aClass.getMethod("setName", String.class);
+        set.invoke(student,"123");
+        System.out.println(student.getName());
+
+        Field name = aClass.getDeclaredField("name");
+//        name.set(student,123);  // 值类型不同
+        name.set(student,"张三");
+        System.out.println(student.getName());
+    }
+
 
 
 }

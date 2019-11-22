@@ -24,6 +24,9 @@ public class ThreadPoolConfig {
     @Value("${local.command.timeout:-1}")
     private int timeout;
 
+    @Value("${stu.name:}")
+    private String name ;
+
     @Bean
     public ExecutorService executorService() {
         ThreadFactory factory = new ThreadFactoryBuilder().setNameFormat("我的线程池-%d").build();
@@ -31,7 +34,10 @@ public class ThreadPoolConfig {
     }
 
     @Bean
+    @Log(description = "123")
     public LocalCommandExecutor localCommandExecutorBuilder(ExecutorService executorService) {
+        log.info("==========创建执行器===================");
+        System.out.println("name ==========" + name.equals("null"));
         return new LocalCommandExecutor
                 .LocalCommandExecutorBuilder(executorService)
                 .setTimeout(timeout).getInstance();
