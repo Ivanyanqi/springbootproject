@@ -19,10 +19,8 @@ public class ExecutorChain {
 
     private ServiceExecutor executor;
 
-    private ServiceContext serviceContext;
 
-
-    public String handler(){
+    public String handler(ServiceContext serviceContext){
         if(inteceptors != null){
             inteceptors.forEach(inteceptor -> {
                 inteceptor.before(serviceContext);

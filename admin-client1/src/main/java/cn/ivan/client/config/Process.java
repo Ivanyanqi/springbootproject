@@ -13,7 +13,7 @@ public class Process {
     private ServiceContext serviceContext;
 
     public String handler(){
-        return serviceFactory.get(method).setServiceContext(serviceContext).handler();
+        return serviceFactory.get(method).handler(serviceContext);
     }
 
     public Process setRequest(String data){
