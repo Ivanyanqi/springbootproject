@@ -16,6 +16,7 @@ import java.lang.reflect.Method;
 import java.text.DateFormat;
 import java.util.*;
 import java.util.concurrent.*;
+import java.util.stream.Collectors;
 
 /**
  * @author : yanqi
@@ -31,7 +32,11 @@ public class PidTest {
         log.info("managerName : {}",name);
         String pid = name.split("@")[0];
         log.info("===pid : {}",pid);
-
+        List<Long> origin = new ArrayList<>();
+        origin.add(1L);
+        origin.add(2L);
+        List<Integer> list = origin.stream().map(Long::intValue).collect(Collectors.toList());
+        list.stream().map(Integer::getClass).forEach(System.out::println);
 
     }
 

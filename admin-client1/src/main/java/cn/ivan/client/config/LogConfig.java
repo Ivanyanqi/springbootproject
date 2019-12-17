@@ -1,6 +1,7 @@
 package cn.ivan.client.config;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
@@ -9,8 +10,10 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
 
 /**
@@ -18,7 +21,7 @@ import java.lang.reflect.Method;
  * @author yanqi
  * @version 1.0
  */
-
+@Slf4j
 @Component
 @Aspect
 public class LogConfig {
@@ -41,10 +44,17 @@ public class LogConfig {
      *  环绕通知要有返回值，返回值类型，和方法类型一致
      * @param joinPoint
      */
+
+
+    // WebApplicationContextUtils
+    @Autowired
+    private HttpServletRequest request;
+
    @Around("pointCut()")
    public Object logAround(ProceedingJoinPoint joinPoint){
        System.out.println("=================执行之前==============");
        try {
+           log.info("request {}" ,request.getClass());
            Object proceed = joinPoint.proceed();
            System.out.println("=================执行之后==============");
            return proceed;

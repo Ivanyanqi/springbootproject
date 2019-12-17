@@ -41,6 +41,6 @@ public class WebConfig implements WebMvcConfigurer {
     private ArgsParseInterceptor argsParseInterceptor;
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(argsParseInterceptor).addPathPatterns("/**");
+        //registry.addInterceptor(argsParseInterceptor).addPathPatterns("/**");
     }
 }
