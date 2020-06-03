@@ -40,10 +40,10 @@
             <version>${admin.client.version}</version>
         </dependency>
 
-        <dependency>
+     <!--   <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -77,13 +77,14 @@
             <version>2.7.3</version>
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>cn.ivan</groupId>
             <artifactId>classes-dex2jar</artifactId>
             <version>0.0.1</version>
             <scope>system</scope>
             <systemPath>${basedir}/src/main/resources/lib/classes-dex2jar.jar</systemPath>
-        </dependency>
+        </dependency>-->
+
     </dependencies>
 
     <build>

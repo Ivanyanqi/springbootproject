@@ -4,29 +4,47 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
+<body onload="autosubmit()">
 <h1>hello world =========</h1>
 
 <button id="btn">点击</button>
+
+<iframe src="https://localhost:8080/client/view/pdf?urlStr=http%3A%2F%2Ftest.storage.jd.com%2Fshops.import.file%2F77937_Contract_businessType_1_businessKey_41296385_templateId_527.pdf%3FExpires%3D3473493947%26AccessKey%3DmpqzLOX6kPJD9lje%26Signature%3DpMi%252B8UjlYVfadZwsQnt7s2gG0po%253D">
+
+</iframe>
+
+<!-- target 名字不对-->
+<form id="forma" target="traget_ifream" method="post" action="https://localhost:8080/client/view/pdf/post">
+    <input type="hidden" name="urlStr" value="http://test.storage.jd.com/shops.import.file/77935_Contract_businessType_1_businessKey_41296384_templateId_527.pdf?Expires=3473492402&AccessKey=mpqzLOX6kPJD9lje&Signature=Y%2FHnU2hlLJqGo3Ic7S7K3l4b8B8%3D">
+    <input type="submit" value="发送">
+</form>
+
+<iframe name="traget_ifream" ></iframe>
 
 </body>
 
 <script src="./1.js"></script>
 <script src="./jquery-3.1.1.min.js"></script>
 <script>
+
+    function autosubmit(){
+        document.getElementById("forma").submit();
+    }
+
     $(function(){
        $("#btn").click(function() {
            $.ajax({
-               url: "testForward",
+               url: "http://localhost:8080/mirage/api/v1/ping",
                method: "get",
+               headers:{
+                   "Origin":"localhost"
+               },
                success: function (data) {
                    console.log(data)
                }
            })
-       })
-    })
-
-
+       });
+    });
 
 </script>
 
