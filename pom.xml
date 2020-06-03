@@ -36,7 +36,6 @@
         <module>zookeeper-client-demo</module>
         <module>web-flux</module>
         <module>web-flux-client</module>
-        <module>../mountain</module>
     </modules>
 
     <dependencies>
