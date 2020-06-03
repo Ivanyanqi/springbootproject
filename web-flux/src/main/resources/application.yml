@@ -1,0 +1,22 @@
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: "*"
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+spring:
+  boot:
+    admin:
+      client:
+        url: http://yqyfw.online:8081
+        username: admin
+        password: admin
+info:
+  name: @project.name@
+  version: @project.version@
+  author: yanqi
+
